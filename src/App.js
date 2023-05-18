@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import { BotPage, EditorPage, MainPage, PartyPage } from './pages'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	return (
+		<Switch>
+			<Route
+				exact
+				path='/challenge/:key'
+				render={() => <PartyPage challenge />}
+			/>
+			<Route
+				exact
+				path='/challenge/'
+				render={() => <PartyPage challenge />}
+			/>
+			<Route path='/party' component={PartyPage} />
+			<Route path='/editor' component={EditorPage} />
+			<Route path='/bot' component={BotPage} />
+			<Route path='/' component={MainPage} />
+		</Switch>
+	)
 }
 
-export default App;
+export default App
